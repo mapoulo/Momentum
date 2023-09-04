@@ -1,0 +1,9 @@
+package Investor.service.project.Repositories;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import Investor.service.project.Entities.RetirementAccount;
+
+public interface RetirementAccountRepo extends JpaRepository<RetirementAccount, Long> {
+
+}

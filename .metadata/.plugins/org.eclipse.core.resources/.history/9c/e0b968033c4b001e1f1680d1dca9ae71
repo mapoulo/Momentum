@@ -1,0 +1,5 @@
+package Investor.service.project.Exceptions;
+
+public class AgeLessThan65Exception {
+
+}

@@ -1,0 +1,71 @@
+package Investor.service.project.Controllers;
+
+import java.lang.reflect.Array;
+import java.util.Arrays;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import Investor.service.project.Entities.Investor;
+import Investor.service.project.Entities.RetirementAccount;
+import Investor.service.project.Entities.SavingsAccount;
+import Investor.service.project.Services.InvestorService;
+import Investor.service.project.Services.RetirementAccountService;
+import Investor.service.project.Services.SavingsAccountService;
+import Investor.service.project.dto.AccountDto;
+
+@RestController
+@RequestMapping("/investor")
+public class InvestorController {
+	
+	
+	@Autowired
+	private InvestorService investorService;
+	@Autowired
+	private RetirementAccountService retirementAccountService;
+	@Autowired
+	private SavingsAccountService savingsAccountService;
+	
+	
+	
+	@PostMapping("/saveInvestor")
+	public Investor saveInvestor(@RequestBody Investor investor) {
+		return investorService.saveInvestor(investor);
+	}
+	
+	
+	@GetMapping("/")
+	public List<Investor> getAllInvestors(){
+		return investorService.getAllInvestors();
+	}
+	
+	@GetMapping("/getAllMyAccounts")
+	public List<AccountDto> getAllAccounts(@RequestParam("investorId") String investorId){
+		
+		
+		
+	  RetirementAccount retirementAccount = retirementAccountService.findByInvestorId(investorId);
+	  SavingsAccount savingsAccount = savingsAccountService.findByInvestorId(investorId);
+		
+	  AccountDto dto1 = new AccountDto().builder()
+			  .accountType(retirementAccount.getAccountType())
+			  .balance(retirementAccount.getBalance())
+			  .investorId(investorId)
+			  .build();
+	  
+	  AccountDto dto2 = new AccountDto().builder()
+			  .accountType(savingsAccount.getAccountType())
+			  .balance(savingsAccount.getBalance())
+			  .investorId(investorId)
+			  .build();
+	  
+	  return Arrays.asList(dto1,dto2);
+	}
+
+}

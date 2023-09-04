@@ -1,0 +1,5 @@
+package Investor.service.project.dto;
+
+public class AccountDto {
+
+}

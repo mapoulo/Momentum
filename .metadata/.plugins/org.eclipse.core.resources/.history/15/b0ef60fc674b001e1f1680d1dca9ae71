@@ -1,0 +1,26 @@
+spring:
+ cloud:
+   gateway:
+     routes:
+       - id: laptop-service
+         uri: lb://laptop-service
+         predicates:
+           - Path=/laptop/**
+         filters:
+           - AuthenticationFilter
+
+       - id: identity-service
+         uri: lb://IDENTITY-SERVICE
+         predicates:
+           - Path=/auth/**
+
+ application:
+   name: GATEWAY-SERVICE
+
+eureka:
+  client:
+    service-url:
+      defaultZone : http://localhost:8761/eureka/
+      
+server:
+  port: 9191      

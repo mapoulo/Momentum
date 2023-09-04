@@ -1,0 +1,5 @@
+package Investor.service.project.Entities;
+
+public class Withdrawal {
+
+}

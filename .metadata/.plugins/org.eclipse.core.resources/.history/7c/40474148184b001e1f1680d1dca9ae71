@@ -1,0 +1,25 @@
+server:
+  port: 8091
+  
+  
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    hostname: localhost
+    
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/Momentum?createDatabaseIfNotExist=true
+    driver-class-name: org.postgresql.Driver
+    password: NkweMapoulo@1
+    username: root
+  jpa:
+    hibernate:
+      ddl-auto: update        
+  application:
+    name: LAPTOP-SERVICE   

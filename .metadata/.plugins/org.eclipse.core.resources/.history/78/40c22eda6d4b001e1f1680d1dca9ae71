@@ -1,0 +1,55 @@
+spring:
+ cloud:
+   gateway:
+     routes:
+       - id: investor-service
+         uri: lb://investor-service
+         predicates:
+           - Path=/investor/**
+         filters:
+           - AuthenticationFilter
+           
+       - id: retirementAccount-service
+         uri: lb://retirementAccount-service
+         predicates:
+           - Path=/retirementAccount/**
+         filters:
+           - AuthenticationFilter   
+           
+           
+       - id: savings-service
+         uri: lb://savings-service
+         predicates:
+           - Path=/savings/**
+         filters:
+           - AuthenticationFilter
+           
+           
+       - id: withdrawals-service
+         uri: lb://withdrawals-service
+         predicates:
+           - Path=/withdrawals/**
+         filters:
+           - AuthenticationFilter         
+
+       - id: identity-service
+         uri: lb://IDENTITY-SERVICE
+         predicates:
+           - Path=/auth/**
+
+ application:
+   name: GATEWAY-SERVICE
+ mvc:
+    pathmatch:
+      matching-strategy: ANT_PATH_MATCHER  
+
+eureka:
+  client:
+    service-url:
+      defaultZone : http://localhost:8761/eureka/
+      
+server:
+  port: 9191  
+  
+  
+     

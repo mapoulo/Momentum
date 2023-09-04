@@ -1,0 +1,21 @@
+package Investor.service.project.Services;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import Investor.service.project.Entities.RetirementAccount;
+import Investor.service.project.Repositories.RetirementAccountRepo;
+
+@Service
+public class RetirementAccountService {
+	
+	
+	@Autowired
+	private RetirementAccountRepo retirementAccountRepo;
+	
+	
+	public RetirementAccount saveAccount(RetirementAccount retirementAccount) {
+		return retirementAccountRepo.save(retirementAccount);
+	}
+
+}
