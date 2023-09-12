@@ -14,7 +14,7 @@ eureka:
 
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/Momentum?createDatabaseIfNotExist=true
+    url: jdbc:mysql://localhost:3306/Users?createDatabaseIfNotExist=true
     driver-class-name: com.mysql.cj.jdbc.Driver
     password: NkweMapoulo@1
     username: root

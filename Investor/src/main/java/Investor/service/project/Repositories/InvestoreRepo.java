@@ -8,6 +8,6 @@ import Investor.service.project.Entities.Investor;
 
 public interface InvestoreRepo extends JpaRepository<Investor, Long>{
 
-	Optional<Investor>  findByinvestorId(String id);
+	Optional<Investor>  findByinvestorId(String investorId);
 
 }

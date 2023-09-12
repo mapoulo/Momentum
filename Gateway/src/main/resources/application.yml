@@ -9,8 +9,8 @@ spring:
          filters:
            - AuthenticationFilter
            
-       - id: retirementAccount-service
-         uri: lb://retirementAccount-service
+       - id: retirement-service
+         uri: lb://retirement-service
          predicates:
            - Path=/retirementAccount/**
          filters:
@@ -25,8 +25,8 @@ spring:
            - AuthenticationFilter
            
            
-       - id: withdrawals-service
-         uri: lb://withdrawals-service
+       - id: withdrawal-service
+         uri: lb://withdrawal-service
          predicates:
            - Path=/withdrawals/**
          filters:
